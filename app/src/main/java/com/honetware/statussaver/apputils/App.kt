@@ -11,7 +11,7 @@ import java.util.*
 
 class App {
     companion object{
-        val FILE_EXTN  = arrayOf("jpg", "jpeg", "png")
+        private val FILE_EXTN  = arrayOf("jpg", "jpeg", "png")
         @Throws(IOException::class)
         fun downloadFile(sourceFile: File, destFile: File) {
             if (!destFile.parentFile.exists()) destFile.parentFile.mkdirs()
@@ -31,10 +31,10 @@ class App {
         }
 
         // Reading file paths from SDCard
-        fun getFilePaths(PHOTO_ALBUM: String): ArrayList<String>? {
+        fun getFilePaths(source: String): ArrayList<String>? {
 
             val filePaths = ArrayList<String>()
-            val directory = File(Environment.getExternalStorageDirectory().toString() + File.separator + PHOTO_ALBUM)
+            val directory = File(Environment.getExternalStorageDirectory().toString() + File.separator + source)
 
             if (directory.isDirectory) {
                 val listFiles = directory.listFiles()
@@ -87,6 +87,21 @@ class App {
                 }
             }
             return inFiles
+        }
+
+        fun getListFilesVideo(parentDir: File): ArrayList<File>? {
+            val allFiles = ArrayList<File>()
+            val files: Array<File>? = parentDir.listFiles()
+            if (files != null) {
+                for (file in files) {
+                    if (file.name.endsWith(".mp4")) {
+                        if (!allFiles.contains(file)) {
+                            allFiles.add(file)
+                        }
+                    }
+                }
+            }
+            return allFiles
         }
     }
 }

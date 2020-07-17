@@ -11,6 +11,8 @@ import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
 import com.honetware.statussaver.ui.SavedImagesFragment
 import com.honetware.statussaver.ui.ViewedImagesFragment
+import com.honetware.statussaver.ui.video.SavedVideoFragment
+import com.honetware.statussaver.ui.video.ViewedVideoFragment
 
 class MainActivity : AppCompatActivity() {
 
@@ -25,7 +27,7 @@ class MainActivity : AppCompatActivity() {
         supportActionBar?.elevation = 0F
 
         // tab titles
-        val titles = arrayOf("New Images", "Saved Images")
+        val titles = arrayOf("Images", "Video","Saved Images","Saved Video")
 
         viewPager.adapter = ViewPagerFragmentAdapter(this)
 
@@ -40,13 +42,15 @@ class MainActivity : AppCompatActivity() {
         override fun createFragment(position: Int): Fragment {
             when (position) {
                 0 -> return ViewedImagesFragment()
-                1 -> return SavedImagesFragment()
+                1 -> return ViewedVideoFragment()
+                2 -> return SavedImagesFragment()
+                3 -> return SavedVideoFragment()
             }
             return ViewedImagesFragment()
         }
 
         override fun getItemCount(): Int {
-            return 2
+            return 3
         }
     }
 }

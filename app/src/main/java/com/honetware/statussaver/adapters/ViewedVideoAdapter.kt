@@ -4,6 +4,8 @@ import android.app.Activity
 import android.content.Context
 import android.content.Intent
 import android.net.Uri
+import android.os.Build
+
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -15,23 +17,26 @@ import com.honetware.statussaver.ui.viewfile.ViewImageActivity
 import java.io.File
 
 
-class ViewedImageAdapter(private val context: Context): RecyclerView.Adapter<ViewedImageAdapter.AdapterViewHolder>() {
+class ViewedVideoAdapter(private val context: Context): RecyclerView.Adapter<ViewedVideoAdapter.AdapterViewHolder>() {
     private var data: ArrayList<File> = ArrayList()
 
     inner class AdapterViewHolder(inflater: LayoutInflater, parent: ViewGroup) :
         RecyclerView.ViewHolder(inflater.inflate(R.layout.pictures_lists, parent, false)) ,View.OnClickListener{
 
         private val image: ImageView = itemView.findViewById(R.id.imageView)
+        private var eye: ImageView = itemView.findViewById(R.id.eye)
 
         fun bind(file: File){
-            val imageUri = Uri.fromFile(file)
+            val videoUri = Uri.fromFile(file)
             //load image to view
-
             Glide.with(context).
-            load(imageUri.path)
+            load(videoUri.path)
                 .centerCrop()
                 .into(image)
 
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                eye.setImageDrawable(context.getDrawable(R.drawable.video))
+            }
             itemView.setOnClickListener(this)
         }
 
@@ -43,7 +48,6 @@ class ViewedImageAdapter(private val context: Context): RecyclerView.Adapter<Vie
         }
     }
 
-    //set data and label
     internal fun setData(result: ArrayList<File>?) {
         if (result != null) {
             this.data = result
