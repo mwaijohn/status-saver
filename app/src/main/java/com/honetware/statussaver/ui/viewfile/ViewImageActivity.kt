@@ -16,7 +16,7 @@ class ViewImageActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_view_image)
+        setContentView(R.layout.activity_saved_image)
 
         val viewPager: ViewPager =  findViewById(R.id.pager)
 

@@ -4,11 +4,9 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Environment
 import android.util.Log
-import android.view.View
 import android.widget.VideoView
 import androidx.viewpager.widget.ViewPager
 import com.honetware.statussaver.R
-import com.honetware.statussaver.adapters.pageadapter.ImagePagingAdapter
 import com.honetware.statussaver.adapters.pageadapter.VideoPagingAdapter
 import com.honetware.statussaver.apputils.App
 import com.honetware.statussaver.apputils.Constants
@@ -18,7 +16,7 @@ class ViewVideoActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_view_video)
+        setContentView(R.layout.activity_saved_image)
 
 
         val viewPager: ViewPager =  findViewById(R.id.pager)
