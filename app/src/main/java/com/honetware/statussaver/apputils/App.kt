@@ -1,11 +1,15 @@
 package com.honetware.statussaver.apputils
 
+import android.Manifest
 import android.app.Activity
 import android.content.Intent
 import android.net.Uri
 import android.os.Environment
+import android.view.View
+import androidx.core.app.ActivityCompat
 import androidx.core.app.ShareCompat.IntentBuilder
 import androidx.core.net.toUri
+import com.google.android.material.snackbar.Snackbar
 import java.io.File
 import java.io.FileInputStream
 import java.io.FileOutputStream
@@ -119,6 +123,18 @@ class App {
                 .addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION)
 
             activity.startActivity(share.intent)
+        }
+
+        fun requestStoragePermissionExpPdf(view: View, activity: Activity){
+            if (ActivityCompat.shouldShowRequestPermissionRationale(activity, Manifest.permission.WRITE_EXTERNAL_STORAGE)){
+                Snackbar.make(view,"Enable write permission to external storage",Snackbar.LENGTH_INDEFINITE)
+                    .setAction("enable"
+                    ) {
+                        ActivityCompat.requestPermissions(activity, arrayOf(Manifest.permission.WRITE_EXTERNAL_STORAGE),20)
+                    }.show()
+            }else{
+                ActivityCompat.requestPermissions(activity, arrayOf(Manifest.permission.WRITE_EXTERNAL_STORAGE),20)
+            }
         }
     }
 }
