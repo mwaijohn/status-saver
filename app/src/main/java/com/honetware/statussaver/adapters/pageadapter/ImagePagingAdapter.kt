@@ -37,12 +37,13 @@ class ImagePagingAdapter(var imageFiles: ArrayList<File>?, var activity: Activit
         val image: ImageView
         val btnSave: Button
         val btnShare: Button
+        val btnDelete: Button
         inflater = activity.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
         val viewLayout: View = inflater!!.inflate(R.layout.full_image, container, false)
         image = viewLayout.findViewById<View>(R.id.image) as ImageView
         btnSave = viewLayout.findViewById<View>(R.id.save) as Button
         btnShare = viewLayout.findViewById(R.id.share)
-
+        btnDelete = viewLayout.findViewById(R.id.delete)
 
         //imagePaths?.get(position)
         val imageUri = Uri.fromFile(imageFiles?.get(position))
@@ -58,6 +59,11 @@ class ImagePagingAdapter(var imageFiles: ArrayList<File>?, var activity: Activit
         }
 
         btnShare.setOnClickListener { App.shareFile(imageUri.toFile(),activity) }
+        btnDelete.setOnClickListener {
+            imageUri.toFile().delete()
+            //imageFiles?.remove(imageFiles?.get(position))
+            App.toastMassage(activity,"File deleted")
+        }
 
         (container as ViewPager).addView(viewLayout)
         return viewLayout

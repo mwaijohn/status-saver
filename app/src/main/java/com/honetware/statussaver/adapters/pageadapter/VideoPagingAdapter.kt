@@ -4,7 +4,6 @@ import android.app.Activity
 import android.content.Context
 import android.net.Uri
 import android.os.Environment
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -34,19 +33,19 @@ class VideoPagingAdapter(private var imageFiles: ArrayList<File>?, private var a
 
     override fun instantiateItem(container: ViewGroup, position: Int): Any {
         val video: VideoView
-        val btnClose: Button
+        val btnSave: Button
         val thumbnail: ImageView
         val videoIcon: ImageView
+        val btnDelete: Button
         inflater = activity.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
         val viewLayout: View = inflater!!.inflate(R.layout.full_videos, container, false)
         video = viewLayout.findViewById<View>(R.id.video) as VideoView
-        btnClose = viewLayout.findViewById<View>(R.id.save) as Button
+        btnSave = viewLayout.findViewById<View>(R.id.save) as Button
         thumbnail = viewLayout.findViewById<View>(R.id.thumbnail) as ImageView
         videoIcon = viewLayout.findViewById<View>(R.id.video_icon) as ImageView
+        btnDelete = viewLayout.findViewById(R.id.delete)
 
-        //imagePaths?.get(position)
         val videoUri = Uri.fromFile(imageFiles?.get(position))
-        Log.d("pspspo",position.toString())
 
         Glide.with(activity).
         load(videoUri.path)
@@ -57,7 +56,6 @@ class VideoPagingAdapter(private var imageFiles: ArrayList<File>?, private var a
         video.setMediaController(mediaController)
 
         video.setVideoURI(videoUri)
-        //video.start()
 
         thumbnail.setOnClickListener {
             thumbnail.visibility = View.GONE
@@ -67,12 +65,18 @@ class VideoPagingAdapter(private var imageFiles: ArrayList<File>?, private var a
 
 
         // close button click event
-        btnClose.setOnClickListener {
-           // activity.finish()
+        btnSave.setOnClickListener {
+
             val file = videoUri.toFile()
             val sourceDirectory = (Environment.getExternalStorageDirectory().absoluteFile).toString()  + Constants.saveLocation + file.name
 
             App.downloadFile(file,File(sourceDirectory))
+        }
+
+        btnDelete.setOnClickListener {
+            videoUri.toFile().delete()
+            //imageFiles?.remove(imageFiles?.get(position))
+            App.toastMassage(activity,"File deleted")
         }
         (container as ViewPager).addView(viewLayout)
         return viewLayout

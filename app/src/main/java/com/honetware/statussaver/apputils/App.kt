@@ -2,10 +2,12 @@ package com.honetware.statussaver.apputils
 
 import android.Manifest
 import android.app.Activity
+import android.content.Context
 import android.content.Intent
 import android.net.Uri
 import android.os.Environment
 import android.view.View
+import android.widget.Toast
 import androidx.core.app.ActivityCompat
 import androidx.core.app.ShareCompat.IntentBuilder
 import androidx.core.net.toUri
@@ -135,6 +137,10 @@ class App {
             }else{
                 ActivityCompat.requestPermissions(activity, arrayOf(Manifest.permission.WRITE_EXTERNAL_STORAGE),20)
             }
+        }
+
+        fun toastMassage(context: Context,massage: String){
+            Toast.makeText(context,massage,Toast.LENGTH_LONG).show()
         }
     }
 }
