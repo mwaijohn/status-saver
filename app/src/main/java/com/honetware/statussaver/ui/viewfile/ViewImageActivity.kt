@@ -3,8 +3,10 @@ package com.honetware.statussaver.ui.viewfile
 import android.os.Bundle
 import android.os.Environment
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.widget.Toolbar
 import androidx.viewpager.widget.ViewPager
 import androidx.viewpager.widget.ViewPager.OnPageChangeListener
+import com.google.android.material.tabs.TabLayout
 import com.honetware.statussaver.R
 import com.honetware.statussaver.adapters.pageadapter.ImagePagingAdapter
 import com.honetware.statussaver.apputils.App
@@ -17,6 +19,10 @@ class ViewImageActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_saved_image)
+
+//        val toolbar: Toolbar = findViewById(R.id.toolbar)
+//        setSupportActionBar(toolbar)
+//        supportActionBar?.elevation = 0F
 
         val viewPager: ViewPager =  findViewById(R.id.pager)
 

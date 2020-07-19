@@ -5,7 +5,9 @@ import android.os.Bundle
 import android.os.Environment
 import android.util.Log
 import android.widget.VideoView
+import androidx.appcompat.widget.Toolbar
 import androidx.viewpager.widget.ViewPager
+import com.google.android.material.tabs.TabLayout
 import com.honetware.statussaver.R
 import com.honetware.statussaver.adapters.pageadapter.VideoPagingAdapter
 import com.honetware.statussaver.apputils.App
@@ -18,12 +20,9 @@ class SavedVideoActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_saved_image)
 
-
-
         val viewPager: ViewPager =  findViewById(R.id.pager)
 
 
-        val compoundFiles = ArrayList<File>()
         val sourceDirectory1 = (Environment.getExternalStorageDirectory().absoluteFile).toString()  + Constants.saveLocation
         val files = App.getListFilesVideo(File(sourceDirectory1))
 
@@ -33,9 +32,6 @@ class SavedVideoActivity : AppCompatActivity() {
         viewPager.adapter = adapter
 
         val position = intent.getIntExtra("filePosition", 0)
-        Log.d("pspsp",position.toString())
-
-        Log.d("pspsp",compoundFiles[position].path)
 
         viewPager.currentItem = position
 

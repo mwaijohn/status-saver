@@ -3,7 +3,9 @@ package com.honetware.statussaver.ui.viewfile
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Environment
+import androidx.appcompat.widget.Toolbar
 import androidx.viewpager.widget.ViewPager
+import com.google.android.material.tabs.TabLayout
 import com.honetware.statussaver.R
 import com.honetware.statussaver.adapters.pageadapter.ImagePagingAdapter
 import com.honetware.statussaver.apputils.App
