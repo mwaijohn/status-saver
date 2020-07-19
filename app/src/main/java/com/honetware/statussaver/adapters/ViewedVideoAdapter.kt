@@ -5,6 +5,7 @@ import android.content.Context
 import android.content.Intent
 import android.net.Uri
 import android.os.Build
+import android.util.Log
 
 import android.view.LayoutInflater
 import android.view.View
@@ -46,6 +47,9 @@ class ViewedVideoAdapter(private val context: Context): RecyclerView.Adapter<Vie
             intent.putExtra("filePosition",adapterPosition)
             val activity = context as Activity
             activity.startActivity(intent)
+
+            Log.d("pspsp",data[adapterPosition].path)
+
         }
     }
 

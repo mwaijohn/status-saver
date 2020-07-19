@@ -15,9 +15,7 @@ import com.honetware.statussaver.apputils.App
 import com.honetware.statussaver.apputils.Constants
 import java.io.File
 
-/**
- * A simple [Fragment] subclass.
- */
+
 class ViewedVideoFragment : Fragment() {
 
     override fun onCreateView(
@@ -33,15 +31,15 @@ class ViewedVideoFragment : Fragment() {
         recyclerView.adapter = adapter
 
         val compoundFiles = ArrayList<File>()
-//        val sourceDirectory1 = (Environment.getExternalStorageDirectory().absoluteFile).toString()  + Constants.whatsAppBusinessUrl
-//        val files = App.getListFilesVideo(File(sourceDirectory1))
+        val sourceDirectory1 = (Environment.getExternalStorageDirectory().absoluteFile).toString()  + Constants.whatsAppBusinessUrl
+        val files = App.getListFilesVideo(File(sourceDirectory1))
 
         val sourceDirectory2 = (Environment.getExternalStorageDirectory().absoluteFile).toString()  + Constants.whatsAppUrl
         val files2 = App.getListFilesVideo(File(sourceDirectory2))
 
-//        if (files != null) {
-//            compoundFiles.addAll(files)
-//        }
+        if (files != null) {
+            compoundFiles.addAll(files)
+        }
 
         if (files2 != null) {
             compoundFiles.addAll(files2)
