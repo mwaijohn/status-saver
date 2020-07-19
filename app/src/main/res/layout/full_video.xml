@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
+    android:background="@color/black"
     android:layout_height="match_parent" >
 
     <VideoView
@@ -17,10 +18,8 @@
         android:layout_alignParentTop="true"
         android:layout_marginRight="15dp"
         android:layout_marginTop="15dp"
-        android:paddingTop="2dp"
-        android:paddingBottom="2dp"
         android:textColor="#ffffff"
-        android:text="Close"
+        android:text="save"
         android:layout_alignParentEnd="true"
         android:layout_marginEnd="15dp" />
 

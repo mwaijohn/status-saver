@@ -14,6 +14,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.honetware.statussaver.R
 import com.honetware.statussaver.ui.viewfile.ViewImageActivity
+import com.honetware.statussaver.ui.viewfile.ViewVideoActivity
 import java.io.File
 
 
@@ -41,7 +42,7 @@ class ViewedVideoAdapter(private val context: Context): RecyclerView.Adapter<Vie
         }
 
         override fun onClick(v: View?) {
-            val intent = Intent(context as Activity, ViewImageActivity::class.java)
+            val intent = Intent(context as Activity, ViewVideoActivity::class.java)
             intent.putExtra("filePosition",adapterPosition)
             val activity = context as Activity
             activity.startActivity(intent)

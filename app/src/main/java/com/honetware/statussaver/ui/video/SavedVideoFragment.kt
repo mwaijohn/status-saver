@@ -29,7 +29,7 @@ class SavedVideoFragment : Fragment() {
         val  adapter = ViewedVideoAdapter(requireContext())
         recyclerView.adapter = adapter
 
-        val sourceDirectory = (Environment.getExternalStorageDirectory().absoluteFile).toString() + "/" + Constants.whatsAppUrl
+        val sourceDirectory = (Environment.getExternalStorageDirectory().absoluteFile).toString() + "/" + Constants.saveLocation
         val files = App.getListFilesVideo(File(sourceDirectory))
 
         adapter.setData(files)

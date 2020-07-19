@@ -50,7 +50,7 @@ class MainActivity : AppCompatActivity() {
         }
 
         override fun getItemCount(): Int {
-            return 3
+            return 4
         }
     }
 }

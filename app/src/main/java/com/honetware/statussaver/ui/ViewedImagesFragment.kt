@@ -30,10 +30,22 @@ class ViewedImagesFragment : Fragment() {
         val  adapter = ViewedImageAdapter(requireContext())
         recyclerView.adapter = adapter
 
-        val sourceDirectory = (Environment.getExternalStorageDirectory().absoluteFile).toString() + "/" + Constants.whatsAppUrl
-        val files = App.getListFiles(File(sourceDirectory))
+        val compoundFiles = ArrayList<File>()
+        val sourceDirectory1 = (Environment.getExternalStorageDirectory().absoluteFile).toString()  + Constants.whatsAppBusinessUrl
+        val files = App.getListFiles(File(sourceDirectory1))
 
-        adapter.setData(files)
+        val sourceDirectory2 = (Environment.getExternalStorageDirectory().absoluteFile).toString()  + Constants.whatsAppUrl
+        val files2 = App.getListFiles(File(sourceDirectory2))
+
+        if (files2 != null) {
+            compoundFiles.addAll(files2)
+        }
+
+        if (files != null) {
+            compoundFiles.addAll(files)
+        }
+
+        adapter.setData(compoundFiles)
 
         return root
     }
