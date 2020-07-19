@@ -10,7 +10,7 @@ import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 
 import com.honetware.statussaver.R
-import com.honetware.statussaver.adapters.ViewedVideoAdapter
+import com.honetware.statussaver.adapters.SavedVideoAdapter
 import com.honetware.statussaver.apputils.App
 import com.honetware.statussaver.apputils.Constants
 import java.io.File
@@ -26,7 +26,7 @@ class SavedVideoFragment : Fragment() {
 
         val layout = GridLayoutManager(activity, 2)
         recyclerView.layoutManager = layout
-        val  adapter = ViewedVideoAdapter(requireContext())
+        val  adapter = SavedVideoAdapter(requireContext())
         recyclerView.adapter = adapter
 
         val sourceDirectory = (Environment.getExternalStorageDirectory().absoluteFile).toString() + "/" + Constants.saveLocation
