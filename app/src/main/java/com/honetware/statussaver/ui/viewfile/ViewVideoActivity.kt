@@ -40,7 +40,7 @@ class ViewVideoActivity : AppCompatActivity() {
         }
 
         val adapter = VideoPagingAdapter(compoundFiles,this)
-
+        //viewPager.offscreenPageLimit = 0
         viewPager.adapter = adapter
 
         val position = intent.getIntExtra("filePosition", 0)
@@ -50,7 +50,7 @@ class ViewVideoActivity : AppCompatActivity() {
 
         viewPager.currentItem = position
 
-        viewPager.offscreenPageLimit = 0
+
         viewPager.addOnPageChangeListener(object : ViewPager.OnPageChangeListener {
             override fun onPageScrolled(position: Int, positionOffset: Float, positionOffsetPixels: Int) {
 

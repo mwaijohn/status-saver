@@ -11,9 +11,9 @@
         android:scaleType="fitCenter" />
 
     <Button
-        android:id="@+id/close"
+        android:id="@+id/save"
         android:layout_width="wrap_content"
-        android:layout_height="30dp"
+        android:layout_height="wrap_content"
         android:layout_alignParentRight="true"
         android:layout_alignParentTop="true"
         android:layout_marginRight="15dp"
@@ -24,5 +24,19 @@
         android:text="@string/save"
         android:layout_alignParentEnd="true"
         android:layout_marginEnd="15dp" />
+    <Button
+        android:id="@+id/share"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="15dp"
+        android:paddingTop="2dp"
+        android:paddingBottom="2dp"
+        android:textColor="#ffffff"
+        android:text="@string/share"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="15dp" />
 
 </RelativeLayout>

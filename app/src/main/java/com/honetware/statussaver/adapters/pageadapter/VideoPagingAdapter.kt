@@ -40,7 +40,7 @@ class VideoPagingAdapter(private var imageFiles: ArrayList<File>?, private var a
         inflater = activity.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
         val viewLayout: View = inflater!!.inflate(R.layout.full_videos, container, false)
         video = viewLayout.findViewById<View>(R.id.video) as VideoView
-        btnClose = viewLayout.findViewById<View>(R.id.close) as Button
+        btnClose = viewLayout.findViewById<View>(R.id.save) as Button
         thumbnail = viewLayout.findViewById<View>(R.id.thumbnail) as ImageView
         videoIcon = viewLayout.findViewById<View>(R.id.video_icon) as ImageView
 

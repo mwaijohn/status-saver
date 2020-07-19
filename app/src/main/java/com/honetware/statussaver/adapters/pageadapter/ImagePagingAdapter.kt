@@ -35,24 +35,30 @@ class ImagePagingAdapter(var imageFiles: ArrayList<File>?, var activity: Activit
 
     override fun instantiateItem(container: ViewGroup, position: Int): Any {
         val image: ImageView
-        val btnClose: Button
+        val btnSave: Button
+        val btnShare: Button
         inflater = activity.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
         val viewLayout: View = inflater!!.inflate(R.layout.full_image, container, false)
         image = viewLayout.findViewById<View>(R.id.image) as ImageView
-        btnClose = viewLayout.findViewById<View>(R.id.close) as Button
+        btnSave = viewLayout.findViewById<View>(R.id.save) as Button
+        btnShare = viewLayout.findViewById(R.id.share)
+
 
         //imagePaths?.get(position)
         val imageUri = Uri.fromFile(imageFiles?.get(position))
         Picasso.get().load(imageUri).error(R.drawable.ic_launcher_background).into(image)
         Log.d("pspspo",position.toString())
         // close button click event
-        btnClose.setOnClickListener {
+        btnSave.setOnClickListener {
            // activity.finish()
             val file = imageUri.toFile()
             val sourceDirectory = (Environment.getExternalStorageDirectory().absoluteFile).toString()  + Constants.saveLocation + file.name
 
             App.downloadFile(file,File(sourceDirectory))
         }
+
+        btnShare.setOnClickListener { App.shareFile(imageUri.toFile(),activity) }
+
         (container as ViewPager).addView(viewLayout)
         return viewLayout
     }

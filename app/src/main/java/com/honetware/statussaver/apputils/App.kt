@@ -1,6 +1,11 @@
 package com.honetware.statussaver.apputils
 
+import android.app.Activity
+import android.content.Intent
+import android.net.Uri
 import android.os.Environment
+import androidx.core.app.ShareCompat.IntentBuilder
+import androidx.core.net.toUri
 import java.io.File
 import java.io.FileInputStream
 import java.io.FileOutputStream
@@ -102,6 +107,18 @@ class App {
                 }
             }
             return allFiles
+        }
+
+        fun shareFile(file: File,activity: Activity){
+            val share = IntentBuilder.from(activity)
+            val uri = Uri.fromFile(file)
+            share.setStream(uri) // uri from FileProvider
+                .intent
+                .setAction(Intent.ACTION_SEND) //Change if needed
+                .setDataAndType(uri, "image/*")
+                .addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION)
+
+            activity.startActivity(share.intent)
         }
     }
 }
