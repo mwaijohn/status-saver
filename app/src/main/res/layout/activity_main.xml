@@ -22,6 +22,7 @@
         android:id="@+id/tab_layout"
         style="@style/Widget.MaterialComponents.TabLayout.Colored"
         android:layout_width="match_parent"
+        app:tabIndicatorColor="@color/colorPrimary"
         android:layout_height="wrap_content"
         android:background="?attr/colorPrimary" />
 

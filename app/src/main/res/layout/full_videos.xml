@@ -42,7 +42,8 @@
         app:layout_constraintEnd_toEndOf="@+id/video_container"
         app:layout_constraintHorizontal_bias="0.913"
         app:layout_constraintStart_toStartOf="@+id/video_container"
-        app:layout_constraintTop_toTopOf="@+id/video_container" />
+        app:layout_constraintTop_toTopOf="@+id/video_container"
+        android:drawableLeft="@drawable/save"/>
 
     <Button
         android:id="@+id/share"
@@ -53,7 +54,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.114"
         app:layout_constraintStart_toStartOf="@+id/video_container"
-        app:layout_constraintTop_toTopOf="@+id/video_container" />
+        app:layout_constraintTop_toTopOf="@+id/video_container"
+        android:drawableLeft="@drawable/share"/>
 
     <Button
         android:id="@+id/delete"
@@ -64,7 +66,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.513"
         app:layout_constraintStart_toStartOf="@+id/video_container"
-        app:layout_constraintTop_toTopOf="@+id/video_container" />
+        app:layout_constraintTop_toTopOf="@+id/video_container"
+        android:drawableLeft="@drawable/delete"/>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

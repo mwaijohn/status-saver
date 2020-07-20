@@ -6,4 +6,5 @@
     <string name="save">Save</string>
     <string name="share">share</string>
     <string name="delete">delete</string>
+    <string name="empty_list">empty list</string>
 </resources>
