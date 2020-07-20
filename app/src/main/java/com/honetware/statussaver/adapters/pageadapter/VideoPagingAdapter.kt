@@ -71,6 +71,7 @@ class VideoPagingAdapter(private var imageFiles: ArrayList<File>?, private var a
             val sourceDirectory = (Environment.getExternalStorageDirectory().absoluteFile).toString()  + Constants.saveLocation + file.name
 
             App.downloadFile(file,File(sourceDirectory))
+            App.toastMassage(activity,"File saved")
         }
 
         btnDelete.setOnClickListener {

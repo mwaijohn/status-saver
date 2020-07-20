@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:id="@+id/video_container"
@@ -39,11 +38,11 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:text="@string/save"
+        android:textAllCaps="false"
         app:layout_constraintEnd_toEndOf="@+id/video_container"
         app:layout_constraintHorizontal_bias="0.913"
         app:layout_constraintStart_toStartOf="@+id/video_container"
-        app:layout_constraintTop_toTopOf="@+id/video_container"
-        android:drawableLeft="@drawable/save"/>
+        app:layout_constraintTop_toTopOf="@+id/video_container" />
 
     <Button
         android:id="@+id/share"
@@ -51,11 +50,11 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:text="@string/share"
+        android:textAllCaps="false"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.114"
         app:layout_constraintStart_toStartOf="@+id/video_container"
-        app:layout_constraintTop_toTopOf="@+id/video_container"
-        android:drawableLeft="@drawable/share"/>
+        app:layout_constraintTop_toTopOf="@+id/video_container" />
 
     <Button
         android:id="@+id/delete"
@@ -63,11 +62,11 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:text="@string/delete"
+        android:textAllCaps="false"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.513"
         app:layout_constraintStart_toStartOf="@+id/video_container"
-        app:layout_constraintTop_toTopOf="@+id/video_container"
-        android:drawableLeft="@drawable/delete"/>
+        app:layout_constraintTop_toTopOf="@+id/video_container" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

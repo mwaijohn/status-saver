@@ -1,10 +1,9 @@
 <resources>
-    <string name="app_name">status saver</string>
+    <string name="app_name">Status Saver</string>
 
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="save">Save</string>
     <string name="share">share</string>
     <string name="delete">delete</string>
     <string name="empty_list">empty list</string>
+
 </resources>

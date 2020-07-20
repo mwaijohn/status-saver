@@ -54,6 +54,7 @@ class ImagePagingAdapter(var imageFiles: ArrayList<File>?, var activity: Activit
             val sourceDirectory = (Environment.getExternalStorageDirectory().absoluteFile).toString()  + Constants.saveLocation + file.name
 
             App.downloadFile(file,File(sourceDirectory))
+            App.toastMassage(activity,"File saved")
         }
 
         btnShare.setOnClickListener { App.shareFile(imageUri.toFile(),activity) }

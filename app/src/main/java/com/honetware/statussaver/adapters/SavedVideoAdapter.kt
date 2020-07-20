@@ -47,8 +47,6 @@ class SavedVideoAdapter(private val context: Context): RecyclerView.Adapter<Save
             val activity = context as Activity
             activity.startActivity(intent)
 
-            Log.d("pspsp",data[adapterPosition].path)
-
         }
     }
 
