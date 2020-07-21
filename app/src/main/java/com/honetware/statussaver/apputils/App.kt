@@ -169,5 +169,31 @@ class App {
 
             return compoundFiles
         }
+
+        fun getVideoFilesFromDirectories(): ArrayList<File>{
+            val compoundFiles = ArrayList<File>()
+            val sourceDirectory1 = (Environment.getExternalStorageDirectory().absoluteFile).toString()  + Constants.whatsAppBusinessUrl
+            val files = getListFilesVideo(File(sourceDirectory1))
+
+            val sourceDirectory2 = (Environment.getExternalStorageDirectory().absoluteFile).toString()  + Constants.whatsAppUrl
+            val files2 = getListFilesVideo(File(sourceDirectory2))
+
+            val sourceDirectory3 = (Environment.getExternalStorageDirectory().absoluteFile).toString()  + Constants.whatsAppGbUrl
+            val files3 = getListFilesVideo(File(sourceDirectory3))
+
+            if (files2 != null) {
+                compoundFiles.addAll(files2)
+            }
+
+            if(files3 != null){
+                compoundFiles.addAll(files3)
+            }
+
+            if (files != null) {
+                compoundFiles.addAll(files)
+            }
+
+            return compoundFiles
+        }
     }
 }

@@ -1,7 +1,6 @@
 package com.honetware.statussaver.ui
 
 import android.os.Bundle
-import android.os.Environment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -31,10 +30,12 @@ class ViewedImagesFragment : Fragment() {
 
         val files = App.getImageFilesFromDirectories()
 
-        adapter.setData(files)
 
         if(files.isEmpty()){
             emptyList.visibility = View.VISIBLE
+        }else{
+            adapter.setData(files)
+
         }
         return root
     }

@@ -31,33 +31,13 @@ class ViewedVideoFragment : Fragment() {
         val  adapter = ViewedVideoAdapter(requireContext())
         recyclerView.adapter = adapter
 
-        val compoundFiles = ArrayList<File>()
-        val sourceDirectory1 = (Environment.getExternalStorageDirectory().absoluteFile).toString()  + Constants.whatsAppBusinessUrl
-        val files = App.getListFilesVideo(File(sourceDirectory1))
+        val files = App.getVideoFilesFromDirectories()
 
-        val sourceDirectory2 = (Environment.getExternalStorageDirectory().absoluteFile).toString()  + Constants.whatsAppUrl
-        val files2 = App.getListFilesVideo(File(sourceDirectory2))
 
-        val sourceDirectory3 = (Environment.getExternalStorageDirectory().absoluteFile).toString()  + Constants.whatsAppGbUrl
-        val files3 = App.getListFilesVideo(File(sourceDirectory2))
-
-        if (files != null) {
-            compoundFiles.addAll(files)
-        }
-
-        if (files2 != null) {
-            compoundFiles.addAll(files2)
-        }
-
-        if (files3 != null) {
-            compoundFiles.addAll(files3)
-        }
-        adapter.setData(compoundFiles)
-
-        if (files != null) {
-            if(files.isEmpty()){
-                emptyList.visibility = View.VISIBLE
-            }
+        if(files.isEmpty()){
+            emptyList.visibility = View.VISIBLE
+        }else{
+            adapter.setData(files)
         }
 
         return root

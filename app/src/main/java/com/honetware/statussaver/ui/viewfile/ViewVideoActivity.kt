@@ -25,29 +25,15 @@ class ViewVideoActivity : AppCompatActivity() {
         val viewPager: ViewPager =  findViewById(R.id.pager)
 
 
-        val compoundFiles = ArrayList<File>()
-        val sourceDirectory1 = (Environment.getExternalStorageDirectory().absoluteFile).toString()  + Constants.whatsAppBusinessUrl
-        val files = App.getListFilesVideo(File(sourceDirectory1))
+        val files = App.getVideoFilesFromDirectories()
 
-        val sourceDirectory2 = (Environment.getExternalStorageDirectory().absoluteFile).toString()  + Constants.whatsAppUrl
-        val files2 = App.getListFilesVideo(File(sourceDirectory2))
 
-        if (files != null) {
-            compoundFiles.addAll(files)
-        }
-
-        if (files2 != null) {
-            compoundFiles.addAll(files2)
-        }
-
-        val adapter = VideoPagingAdapter(compoundFiles,this)
+        val adapter = VideoPagingAdapter(files,this)
         //viewPager.offscreenPageLimit = 0
         viewPager.adapter = adapter
 
         val position = intent.getIntExtra("filePosition", 0)
-        Log.d("pspsp",position.toString())
 
-        Log.d("pspsp",compoundFiles[position].path)
 
         viewPager.currentItem = position
 
