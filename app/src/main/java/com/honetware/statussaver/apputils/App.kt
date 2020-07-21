@@ -18,6 +18,7 @@ import java.io.FileOutputStream
 import java.io.IOException
 import java.nio.channels.FileChannel
 import java.util.*
+import kotlin.collections.ArrayList
 
 
 class App {
@@ -141,6 +142,32 @@ class App {
 
         fun toastMassage(context: Context,massage: String){
             Toast.makeText(context,massage,Toast.LENGTH_LONG).show()
+        }
+
+        fun getImageFilesFromDirectories(): ArrayList<File>{
+            val compoundFiles = ArrayList<File>()
+            val sourceDirectory1 = (Environment.getExternalStorageDirectory().absoluteFile).toString()  + Constants.whatsAppBusinessUrl
+            val files = getListFiles(File(sourceDirectory1))
+
+            val sourceDirectory2 = (Environment.getExternalStorageDirectory().absoluteFile).toString()  + Constants.whatsAppUrl
+            val files2 = getListFiles(File(sourceDirectory2))
+
+            val sourceDirectory3 = (Environment.getExternalStorageDirectory().absoluteFile).toString()  + Constants.whatsAppGbUrl
+            val files3 = getListFiles(File(sourceDirectory3))
+
+            if (files2 != null) {
+                compoundFiles.addAll(files2)
+            }
+
+            if(files3 != null){
+                compoundFiles.addAll(files3)
+            }
+
+            if (files != null) {
+                compoundFiles.addAll(files)
+            }
+
+            return compoundFiles
         }
     }
 }

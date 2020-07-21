@@ -5,5 +5,7 @@
     <string name="share">share</string>
     <string name="delete">delete</string>
     <string name="empty_list">empty list</string>
-
+    <string name="action_privacy">privacy policy</string>
+    <string name="action_rate">rate us</string>
+    <string name="privacy_policy_url">https://sites.google.com/view/honetware/home</string>
 </resources>

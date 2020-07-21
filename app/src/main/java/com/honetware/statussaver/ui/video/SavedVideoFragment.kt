@@ -13,6 +13,8 @@ import com.honetware.statussaver.R
 import com.honetware.statussaver.adapters.SavedVideoAdapter
 import com.honetware.statussaver.apputils.App
 import com.honetware.statussaver.apputils.Constants
+import kotlinx.android.synthetic.main.fragment_viewed_video.*
+
 import java.io.File
 
 class SavedVideoFragment : Fragment() {
@@ -21,7 +23,7 @@ class SavedVideoFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val root: View = inflater.inflate(R.layout.fragment_saved_video, container, false)
+        val root: View = inflater.inflate(R.layout.fragment_viewed_video, container, false)
         val recyclerView= root.findViewById<RecyclerView>(R.id.recyclerView)
 
         val layout = GridLayoutManager(activity, 2)
@@ -31,6 +33,12 @@ class SavedVideoFragment : Fragment() {
 
         val sourceDirectory = (Environment.getExternalStorageDirectory().absoluteFile).toString() + "/" + Constants.saveLocation
         val files = App.getListFilesVideo(File(sourceDirectory))
+
+        if (files != null) {
+            if(files.isEmpty()){
+                emptyList.visibility = View.VISIBLE
+            }
+        }
 
         adapter.setData(files)
 

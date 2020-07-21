@@ -13,6 +13,7 @@ import com.honetware.statussaver.R
 import com.honetware.statussaver.adapters.ViewedVideoAdapter
 import com.honetware.statussaver.apputils.App
 import com.honetware.statussaver.apputils.Constants
+import kotlinx.android.synthetic.main.fragment_viewed_video.*
 import java.io.File
 
 
@@ -37,6 +38,9 @@ class ViewedVideoFragment : Fragment() {
         val sourceDirectory2 = (Environment.getExternalStorageDirectory().absoluteFile).toString()  + Constants.whatsAppUrl
         val files2 = App.getListFilesVideo(File(sourceDirectory2))
 
+        val sourceDirectory3 = (Environment.getExternalStorageDirectory().absoluteFile).toString()  + Constants.whatsAppGbUrl
+        val files3 = App.getListFilesVideo(File(sourceDirectory2))
+
         if (files != null) {
             compoundFiles.addAll(files)
         }
@@ -45,7 +49,16 @@ class ViewedVideoFragment : Fragment() {
             compoundFiles.addAll(files2)
         }
 
+        if (files3 != null) {
+            compoundFiles.addAll(files3)
+        }
         adapter.setData(compoundFiles)
+
+        if (files != null) {
+            if(files.isEmpty()){
+                emptyList.visibility = View.VISIBLE
+            }
+        }
 
         return root
     }

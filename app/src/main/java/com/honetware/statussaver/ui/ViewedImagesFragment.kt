@@ -11,8 +11,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.honetware.statussaver.R
 import com.honetware.statussaver.adapters.ViewedImageAdapter
 import com.honetware.statussaver.apputils.App
-import com.honetware.statussaver.apputils.Constants
-import java.io.File
+import kotlinx.android.synthetic.main.fragment_viewed_images.*
 
 
 class ViewedImagesFragment : Fragment() {
@@ -30,23 +29,13 @@ class ViewedImagesFragment : Fragment() {
         val  adapter = ViewedImageAdapter(requireContext())
         recyclerView.adapter = adapter
 
-        val compoundFiles = ArrayList<File>()
-        val sourceDirectory1 = (Environment.getExternalStorageDirectory().absoluteFile).toString()  + Constants.whatsAppBusinessUrl
-        val files = App.getListFiles(File(sourceDirectory1))
+        val files = App.getImageFilesFromDirectories()
 
-        val sourceDirectory2 = (Environment.getExternalStorageDirectory().absoluteFile).toString()  + Constants.whatsAppUrl
-        val files2 = App.getListFiles(File(sourceDirectory2))
+        adapter.setData(files)
 
-        if (files2 != null) {
-            compoundFiles.addAll(files2)
+        if(files.isEmpty()){
+            emptyList.visibility = View.VISIBLE
         }
-
-        if (files != null) {
-            compoundFiles.addAll(files)
-        }
-
-        adapter.setData(compoundFiles)
-
         return root
     }
 

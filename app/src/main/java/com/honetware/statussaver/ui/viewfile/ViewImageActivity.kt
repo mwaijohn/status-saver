@@ -24,23 +24,10 @@ class ViewImageActivity : AppCompatActivity() {
 
         val viewPager: ViewPager =  findViewById(R.id.pager)
 
-        val compoundFiles = ArrayList<File>()
-        val sourceDirectory1 = (Environment.getExternalStorageDirectory().absoluteFile).toString()  + Constants.whatsAppBusinessUrl
-        val files = App.getListFiles(File(sourceDirectory1))
-
-        val sourceDirectory2 = (Environment.getExternalStorageDirectory().absoluteFile).toString()  + Constants.whatsAppUrl
-        val files2 = App.getListFiles(File(sourceDirectory2))
-
-        if (files2 != null) {
-            compoundFiles.addAll(files2)
-        }
-
-        if (files != null) {
-            compoundFiles.addAll(files)
-        }
+        val files = App.getImageFilesFromDirectories()
 
 
-        val adapter = ImagePagingAdapter(compoundFiles,this)
+        val adapter = ImagePagingAdapter(files,this)
 
         viewPager.adapter = adapter
 

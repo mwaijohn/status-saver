@@ -13,7 +13,9 @@ import com.honetware.statussaver.R
 import com.honetware.statussaver.adapters.SavedImageAdapter
 import com.honetware.statussaver.apputils.App
 import com.honetware.statussaver.apputils.Constants
+import kotlinx.android.synthetic.main.fragment_viewed_images.*
 import java.io.File
+import kotlin.collections.emptyList
 
 /**
  * A simple [Fragment] subclass.
@@ -25,7 +27,7 @@ class SavedImagesFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        val root = inflater.inflate(R.layout.fragment_saved_images, container, false)
+        val root = inflater.inflate(R.layout.fragment_viewed_images, container, false)
 
         val recyclerView= root.findViewById<RecyclerView>(R.id.recyclerView)
 
@@ -39,7 +41,10 @@ class SavedImagesFragment : Fragment() {
 
         adapter.setData(files)
 
-        recyclerView.setOnClickListener {
+        if (files != null) {
+            if(files.isEmpty()){
+                emptyList.visibility = View.VISIBLE
+            }
         }
         return root
     }
