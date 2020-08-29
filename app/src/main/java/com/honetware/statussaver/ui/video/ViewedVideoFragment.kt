@@ -1,20 +1,17 @@
 package com.honetware.statussaver.ui.video
 
 import android.os.Bundle
-import android.os.Environment
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.TextView
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 
 import com.honetware.statussaver.R
 import com.honetware.statussaver.adapters.ViewedVideoAdapter
 import com.honetware.statussaver.apputils.App
-import com.honetware.statussaver.apputils.Constants
-import kotlinx.android.synthetic.main.fragment_viewed_video.*
-import java.io.File
 
 
 class ViewedVideoFragment : Fragment() {
@@ -35,6 +32,7 @@ class ViewedVideoFragment : Fragment() {
 
 
         if(files.isEmpty()){
+            val emptyList = root.findViewById<TextView>(R.id.emptyList)
             emptyList.visibility = View.VISIBLE
         }else{
             adapter.setData(files)

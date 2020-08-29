@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.TextView
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 
@@ -13,9 +14,7 @@ import com.honetware.statussaver.R
 import com.honetware.statussaver.adapters.SavedImageAdapter
 import com.honetware.statussaver.apputils.App
 import com.honetware.statussaver.apputils.Constants
-import kotlinx.android.synthetic.main.fragment_viewed_images.*
 import java.io.File
-import kotlin.collections.emptyList
 
 /**
  * A simple [Fragment] subclass.
@@ -43,6 +42,7 @@ class SavedImagesFragment : Fragment() {
 
         if (files != null) {
             if(files.isEmpty()){
+                val emptyList = root.findViewById<TextView>(R.id.emptyList)
                 emptyList.visibility = View.VISIBLE
             }
         }

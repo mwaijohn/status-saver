@@ -37,10 +37,12 @@ class VideoPagingAdapter(private var imageFiles: ArrayList<File>?, private var a
         val thumbnail: ImageView
         val videoIcon: ImageView
         val btnDelete: Button
+        val btnShare: Button
         inflater = activity.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
         val viewLayout: View = inflater!!.inflate(R.layout.full_videos, container, false)
         video = viewLayout.findViewById<View>(R.id.video) as VideoView
         btnSave = viewLayout.findViewById<View>(R.id.save) as Button
+        btnShare = viewLayout.findViewById<View>(R.id.share) as Button
         thumbnail = viewLayout.findViewById<View>(R.id.thumbnail) as ImageView
         videoIcon = viewLayout.findViewById<View>(R.id.video_icon) as ImageView
         btnDelete = viewLayout.findViewById(R.id.delete)
@@ -64,7 +66,6 @@ class VideoPagingAdapter(private var imageFiles: ArrayList<File>?, private var a
         }
 
 
-        // close button click event
         btnSave.setOnClickListener {
 
             val file = videoUri.toFile()
@@ -73,6 +74,8 @@ class VideoPagingAdapter(private var imageFiles: ArrayList<File>?, private var a
             App.downloadFile(file,File(sourceDirectory))
             App.toastMassage(activity,"File saved")
         }
+
+        btnShare.setOnClickListener { App.shareFile(videoUri.toFile(),activity) }
 
         btnDelete.setOnClickListener {
             videoUri.toFile().delete()

@@ -4,13 +4,13 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.honetware.statussaver.R
 import com.honetware.statussaver.adapters.ViewedImageAdapter
 import com.honetware.statussaver.apputils.App
-import kotlinx.android.synthetic.main.fragment_viewed_images.*
 
 
 class ViewedImagesFragment : Fragment() {
@@ -32,6 +32,7 @@ class ViewedImagesFragment : Fragment() {
 
 
         if(files.isEmpty()){
+            val emptyList = root.findViewById<TextView>(R.id.emptyList)
             emptyList.visibility = View.VISIBLE
         }else{
             adapter.setData(files)
